@@ -20,6 +20,8 @@ driver.get('https://everytime.kr/lecture')
 
 f = open('lecturelist.csv', 'r')
 lecturelist = csv.reader(f)
+
+reviewlist = []
 for l in lecturelist:
     for ll in l:
         if ll == '':
@@ -41,14 +43,21 @@ for l in lecturelist:
                 driver.switch_to.window(driver.window_handles[-1])
 
                 #강의평 하나씩 출력해봄
-                articles = driver.find_element_by_class_name("articles")
-                reviews = articles.find_elements_by_class_name("text")
-                cnt = 1
-                for review in reviews:
-                    print(cnt)
-                    cnt += 1
-                    print(review.text)
+                try:
+                    articles = driver.find_element_by_class_name("articles")
+                    reviews = articles.find_elements_by_class_name("text")
+                    #cnt = 1
+                    for review in reviews:
+                       # print(cnt)
+                        #cnt += 1
+                        print(review.text)
+                        reviewlist.append(review.text)
+                except:
+                    pass
                 driver.close()
                 driver.switch_to.window(driver.window_handles[0])
 
 
+with open('reviewlist.csv', 'w', newline='') as reviewfile:
+    writer = csv.writer(reviewfile)
+    writer.writerow(reviewlist)
