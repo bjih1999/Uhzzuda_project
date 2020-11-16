@@ -28,10 +28,10 @@ with open('konlpy/preprocessed_review.csv', 'w', newline='') as output_file:
         print(review[0])
         review = review[0]
         review = re.sub(r'(\[)([\w\s-]*)(\])', '', review)  # [20nn-n학기 ~~대학 공모전 ~]과 같은 형식 제거
+        review = re.sub(r'(\*+)([\w\s\.\-]*)(\*+)', '', review)  # ex) ** 20-1학기 IT대학 강의평가 공모전을 통해 접수된 강의평가입니다. ** 와 같은 형식 제거
         review = re.sub(r'(\*)([\w\s\/,]*)(.)', '', review)  # ex) *본 후기는 온전히 경영대학 학우 분들의 의견으로 구성되었습니다. 와 같은 형식 제거
         # review = re.sub(r'(\*)([\w\s:]*)(★*)', '', review) # ex) * 공과대학 학우들에게 추천하는 정도:★★★★★ 제거
         review = re.sub(r'(-)([\w\s-]*)(.)', '', review) # ex) - 공과대학 학우분들이 답변해 주신 솔직한 후기로 모든 후기들은 에브리타임 수강평 등록을 허락하신 학우님들에 한하여 작성되었습니다. 제거
-        review = re.sub(r'(\*)([\w\s\/,]*)(\**)', '', review)   # ex) ** 20-1학기 IT대학 강의평가 공모전을 통해 접수된 강의평가입니다. ** 와 같은 형식 제거
         review = re.sub(r'[~!@#$%^&*()♥★☆♡-]', '', review)  # 특수문자 제거
         review = review.replace('ㅋ', '')
         review = review.replace('ㅎ', '')
@@ -47,5 +47,4 @@ with open('konlpy/preprocessed_review.csv', 'w', newline='') as output_file:
         writer.writerow(sent)
 
 
-# print(preprocessed_sent)
 
