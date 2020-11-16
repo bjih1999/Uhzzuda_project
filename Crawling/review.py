@@ -18,7 +18,7 @@ driver.find_element_by_xpath('//*[@id="container"]/form/p[3]/input').click()
 
 driver.get('https://everytime.kr/lecture')
 
-f = open('8_simple.csv', 'r')
+f = open('5.csv', 'r')
 lecturelist = csv.reader(f)
 
 reviewfile = open('rewiewlist2.csv', 'a+', newline='')
@@ -35,7 +35,8 @@ for l in lecturelist:
             elem.clear()
             elem.send_keys(ll)
             elem.submit()
-            time.sleep(0.1)
+
+            # time.sleep(0.5)
 
             #강의 목록 하나씩 탭열기
             lectures = driver.find_elements_by_class_name('lecture')
@@ -63,4 +64,7 @@ for l in lecturelist:
                 driver.switch_to.window(driver.window_handles[0])
 
 
-reviewfile.close()
+with open('reviewlist.csv', 'w', newline='') as reviewfile:
+    writer = csv.writer(reviewfile)
+    for review in reviewlist:
+        writer.writerow(review)
