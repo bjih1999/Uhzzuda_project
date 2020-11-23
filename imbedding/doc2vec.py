@@ -23,8 +23,6 @@ documents = [TaggedDocument(doc, [i]) for i, doc in enumerate(texts)]
 #2 doc2vec_model = Doc2Vec(documents, vector_size=20, window=10, min_count=20, workers=4)
 #3 doc2vec_model = Doc2Vec(documents, vector_size=50, window=7, min_count=20, workers=4)
 #4 doc2vec_model = Doc2Vec(documents, vector_size=100, window=7, min_count=20, workers=4)
-doc2vec_model = Doc2Vec(documents, vector_size=50, window=7, min_count=30, workers=4)
-doc2vec_model.save('doc2vec5.model')
 
-doc2vec_model = Doc2Vec(documents, vector_size=50, window=10, min_count=30, workers=4)
-doc2vec_model.save('doc2vec6.model')
+doc2vec_model = Doc2Vec(documents, vector_size=50, window=5, min_count=20, workers=4)
+doc2vec_model.save('doc2vec7.model')

@@ -1,3 +1,11 @@
-python-dotenv==0.14.0
-selenium==3.141.0
-urllib3==1.25.10
+joblib==0.17.0
+numpy==1.19.4
+pandas==1.1.4
+psutil==5.7.3
+python-dateutil==2.8.1
+pytz==2020.4
+scikit-learn==0.23.2
+scipy==1.5.4
+six==1.15.0
+soynlp==0.0.493
+threadpoolctl==2.1.0

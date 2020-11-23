@@ -2,14 +2,9 @@ import pandas as pd
 import numpy as np
 import csv
 
-texts = []
-f = open('../reviewlist/reviewlist.csv', 'r')
-for line in f.readlines():
-    print(line)
+reviewlist = []
+with open('../reviewlist/reviewlist.csv', 'r') as reviewfile:
+    reader = csv.reader(reviewfile)
+    for row in reader:
+        reviewlist.append(row)
 
-
-
-from eunjeon import Mecab  # KoNLPy style mecab wrapper
-tagger = Mecab()
-for line in texts:
-    print(tagger.pos(line))

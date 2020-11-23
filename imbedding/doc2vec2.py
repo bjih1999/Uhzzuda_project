@@ -15,5 +15,9 @@ from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 documents = [TaggedDocument(doc, [i]) for i, doc in enumerate(texts)]
 # doc2vec2
 # doc2vec_model = Doc2Vec(documents, vector_size=50, window=7, min_count=30, workers=4)
-doc2vec_model = Doc2Vec(documents, vector_size=70, window=5, min_count=30, workers=4)
-doc2vec_model.save('doc2vec_jull2.model')
+# doc2vec_model = Doc2Vec(documents, vector_size=70, window=5, min_count=30, workers=4)
+doc2vec_model = Doc2Vec(documents, vector_size=50, window=5, min_count=5, workers=4)
+doc2vec_model.save('doc2vec_jull3.model')
+
+doc2vec_model = Doc2Vec(documents, vector_size=50, window=3, min_count=5, workers=4)
+doc2vec_model.save('doc2vec_jull4.model')
