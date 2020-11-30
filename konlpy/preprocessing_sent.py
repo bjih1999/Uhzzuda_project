@@ -31,15 +31,15 @@ reviewlist = sentences
 # regex1 = re.compile(r'(^\[)($])')
 # print(re.sub(r'^\[[\w\b]+\]$', '', '[2020-1학기 공과대학 수강후기 공모전]'))
 # print(re.sub(r'(\[)([\w\s-]*)(\])', '', '[2018-2 경영대학 리얼 수강후기 공모전]\n*상단의 과제/조모임/학점비율 등의 항목들은 일괄적으로 가장 왼쪽 항목에 체크되었으며, 아래의 본 내용과 무관함을 알려드립니다.\n*본 후기는 온전히 경영대학 학우 분들의 의견으로 구성되었습니다.\n교수님의 수업 스타일은 매우 자유분방 하십니다. 너무 자유분방하셔서 수업의 본질을 흐리시는 것 같네요 금융시장론이란 명칭을 바꾸셔야 될거 같습니다. 밴드라는 걸 이용해서 매주 기사 스크랩을 시키고 참잘했어요를 주십니다 시험은 기말고사 한번인데 비중이 매우 적습니다 출결은 거의 반영 안되는 것 같구요 성적 비중을 교수님 마음대로 정합니다 팀프로젝트가 한 번 있어요').replace('*상단의 과제/조모임/학점비율 등의 항목들은 일괄적으로 가장 왼쪽 항목에 체크되었으며, 아래의 본 내용과 무관함을 알려드립니다.', '').replace('*본 후기는 온전히 경영대학 학우 분들의 의견으로 구성되었습니다.', ''))
-sent_file = open('konlpy/review_sent_1123.csv', 'w', newline='')
+sent_file = open('konlpy/review_sent_지워.csv', 'w', newline='')
 sent_writer = csv.writer(sent_file)
 
-with open('konlpy/preprocessed_review_sent_1123.csv', 'w', newline='') as output_file:
+with open('konlpy/preprocessed_review_sent_지워.csv', 'w', newline='') as output_file:
     #test 중
     writer = csv.writer(output_file)
     preprocessed_sent = []
     preprocessed_sent_str = []
-    for idx, review in enumerate(reviewlist):
+    for idx, review in enumerate(reviewlist[:100]):
         print(idx, ' :', review)
         # review = review[0]
         review = re.sub(r'(\[)([\w\s-]*)(\])', '', review)  # [20nn-n학기 ~~대학 공모전 ~]과 같은 형식 제거

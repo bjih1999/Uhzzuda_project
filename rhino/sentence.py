@@ -8,7 +8,7 @@ initialize(java_options="-Xmx4g", rhino='LATEST')
 
 reviewlist = []
 
-with open('entered_review.csv', 'r') as reviewfile:
+with open('rhino\entered_review.csv', 'r') as reviewfile:
     reader = csv.reader(reviewfile)
     for row in reader:
         reviewlist = row

@@ -22,6 +22,7 @@ JPype1 @ file:///C:/Dev/Capstone_project/konlpy/JPype1-1.1.2-cp38-cp38-win_amd64
 Keras==2.4.3
 Keras-Preprocessing==1.1.2
 kiwisolver==1.3.1
+koalanlp==2.1.6
 konlpy==0.5.2
 lxml==4.6.1
 Markdown==3.3.3
@@ -34,6 +35,7 @@ Pillow==8.0.1
 protobuf==3.13.0
 psutil==5.7.3
 py-hanspell==1.1
+py4j==0.10.9.1
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycodestyle==2.6.0
@@ -46,6 +48,7 @@ pytz==2020.4
 PyYAML==5.3.1
 requests==2.24.0
 requests-oauthlib==1.3.0
+rhinoMorph==3.8.0.0
 rsa==4.6
 scikit-learn==0.23.2
 scipy==1.5.3
