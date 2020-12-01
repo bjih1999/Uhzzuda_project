@@ -73,10 +73,11 @@ for line4 in f.readlines():
     review_texts.append(oneline3)
 
 wtf = []
-for i in review_texts:
+for i in preprocessed_texts:
     wtf.append(model.infer_vector(i))
 
-prediction = knn_classifier.predict(training_data)
+prediction = knn_classifier.predict(wtf)
+# 너무 느리면 prediction = knn_classifier.predict(validation_data)
 
 # 6항목을 정답으로 분류한 결과 문장 (6은 교수님+)
 count = 0
