@@ -5,20 +5,27 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 import csv
 
-texts = []
+preprocessed_texts2300 = []
 f = open('../rhino/preprocessed_review_rhino_1126_temp2300.csv', 'r')
 for line in f.readlines():
     oneline = line.replace('\n', '').split(',')
     oneline = list(filter(None, oneline))
-    texts.append(oneline)
-print('training_points : ', len(texts))
+    preprocessed_texts2300.append(oneline)
+print('training_points : ', len(preprocessed_texts2300))
+
+preprocessed_texts = []
+f = open('../rhino/preprocessed_review_rhino_1126.csv', 'r')
+for line in f.readlines():
+    oneline = line.replace('\n', '').split(',')
+    oneline = list(filter(None, oneline))
+    preprocessed_texts.append(oneline)
 
 embedded_texts = []
 model = Doc2Vec.load('../imbedding/doc2vec_v300_w10')
-for i in texts:
+for i in preprocessed_texts2300:
     embedded_texts.append(model.infer_vector(i))
 
-size = (len(texts), 13)
+size = (len(preprocessed_texts2300), 13)
 labels = np.zeros(size, dtype=int)
 ff = open('label_2300.csv', 'r')
 arr = []
@@ -58,15 +65,15 @@ knn_classifier.fit(training_data, training_labels)
 
 # 문장 분류하기
 ##원본 문장
-texts2 = []
+review_texts = []
 
 f = open('../rhino/review_sent_rhino_1126.csv', 'r')
 for line4 in f.readlines():
     oneline3 = line4.replace("\n", "").split(",")
-    texts2.append(oneline3)
+    review_texts.append(oneline3)
 
 wtf = []
-for i in texts2:
+for i in review_texts:
     wtf.append(model.infer_vector(i))
 
 prediction = knn_classifier.predict(training_data)
@@ -77,5 +84,5 @@ with open('knnClassifier_professor+.csv', 'w', newline='') as ffff:
     makewrite = csv.writer(ffff)
     for row_prediction in prediction:
         if row_prediction[6] == 1:
-            makewrite.writerow(texts2[count])
+            makewrite.writerow(review_texts[count])
         count = count + 1
