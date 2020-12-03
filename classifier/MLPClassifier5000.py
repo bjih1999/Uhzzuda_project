@@ -1,5 +1,5 @@
 from gensim.models.doc2vec import Doc2Vec
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neural_network import MLPClassifier
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -7,11 +7,12 @@ import csv
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 preprocessed_texts2300 = []
-f = open('rhino/preprocessed_review_rhino_1126_temp2300.csv', 'r')
+f = open('rhino/preprocessed_review_rhino_1126.csv', 'r')
 for line in f.readlines():
     oneline = line.replace('\n', '').split(',')
     oneline = list(filter(None, oneline))
     preprocessed_texts2300.append(oneline)
+preprocessed_texts2300 = preprocessed_texts2300[:5000]
 print('training_points : ', len(preprocessed_texts2300))
 
 preprocessed_texts = []
@@ -28,12 +29,15 @@ for i in preprocessed_texts2300:
 
 size = (len(preprocessed_texts2300), 13)
 labels = np.zeros(size, dtype=int)
-ff = open('classifier/label_2300.csv', 'r')
+ff = open('classifier/label_5000.csv', 'r')
 arr = []
 label = []
 reader = csv.reader(ff)
 for row in reader:
     arr.append(row)
+
+while len(arr) < 5000:
+    arr.append(['', '', '', '', '', '', '', '', '', '', '', '', ''])
 
 for i in range(len(arr)):
     line = []
@@ -54,21 +58,18 @@ y = pd.DataFrame(labels)
 df_data = X.iloc[:, 0:300]
 df_labels = y.iloc[:, 0:13]
 
-knn_classifier = KNeighborsClassifier(
-    n_neighbors = 20,
-    # weights = 'distance',
-)
+MLP_classifier = MLPClassifier(hidden_layer_sizes=(30,30,30), max_iter=10000, solver='lbfgs')
 
 training_data, validation_data , training_labels, validation_labels = \
     train_test_split(df_data, df_labels, test_size = 0.1, random_state = 52)
 
-knn_classifier.fit(training_data, training_labels)
+MLP_classifier.fit(training_data, training_labels[:][8])
 
-pred = knn_classifier.predict(validation_data)
-print("Accuracy = ", accuracy_score(validation_labels[:][6], pred[:, 6]))
-print("Precision = ", precision_score(validation_labels[:][6], pred[:, 6], average='macro'))
-print("Recall = ", recall_score(validation_labels[:][6], pred[:, 6], average='micro'))
-print("f1 score = ", f1_score(validation_labels[:][6], pred[:, 6]))
+pred = MLP_classifier.predict(validation_data)
+print("Accuracy = ", accuracy_score(validation_labels[:][8], pred))
+print("Precision = ", precision_score(validation_labels[:][8], pred, average='macro', zero_division=1))
+print("Recall = ", recall_score(validation_labels[:][8], pred, average='micro'))
+print("f1 score = ", f1_score(validation_labels[:][8], pred))
 
 # 문장 분류하기
 ##원본 문장
@@ -83,14 +84,14 @@ wtf = []
 for i in preprocessed_texts:
     wtf.append(model.infer_vector(i))
 
-prediction = knn_classifier.predict(wtf)
+prediction = MLP_classifier.predict(wtf)
 # 너무 느리면 prediction = knn_classifier.predict(validation_data)
 
 # 6항목을 정답으로 분류한 결과 문장 (6은 교수님+)
 count = 0
-with open('classifier/knnClassifier_professor+_plz.csv', 'w', newline='') as ffff:
+with open('classifier/MLPClassifier_class+_30_30_30_maxiter10000_ibfgs.csv', 'w', newline='') as ffff:
     makewrite = csv.writer(ffff)
     for row_prediction in prediction:
-        if row_prediction[6] == 1:
+        if row_prediction == 1:
             makewrite.writerow(review_texts[count])
         count = count + 1
