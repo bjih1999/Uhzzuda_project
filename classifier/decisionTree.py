@@ -5,7 +5,7 @@ from sklearn.tree import DecisionTreeClassifier
 import csv
 
 texts = []
-f = open('../rhino/preprocessed_review_rhino_1126_temp2300.csv', 'r')
+f = open('classifier/2_tunning_shuffled_pre_review_rhino_1203.csv', 'r')
 for line in f.readlines():
     oneline = line.replace("\n", "").split(",")
     oneline = list(filter(None, oneline))
