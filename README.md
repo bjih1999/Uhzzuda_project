@@ -24,9 +24,27 @@ SSU Capstone project 2020-2
   
 `pip install -r requirements.txt  //프로젝트 디렉토리 root에서 실행`
 
+---
+
 ## 개발 환경
 |  | tool |
 | --- | --- |
 | OS | Windows10 |
 | language | ![issue badge](https://img.shields.io/badge/python-3.8.6-blue) |
 | API | ![issue badge](https://img.shields.io/badge/rhinoMorp-3.8.0.0-brightgreen) ![issue badge](https://img.shields.io/badge/PyKoSpacing-0.3-9cf) ![issue badge](https://img.shields.io/badge/gensim-3.8.3-critical) ![issue badge](https://img.shields.io/badge/scikit--learn-0.23.2-blueviolet)|
+
+---
+
+## 사용 예시  
+
+
+<img src="https://user-images.githubusercontent.com/42201356/103396395-635a0480-4b76-11eb-87dc-c1b4ba81ccc3.png" alt="강의 목록">  
+
+강의 목록 화면 출력 예시  
+
+
+
+<img src="https://user-images.githubusercontent.com/42201356/103397967-db77f880-4b7d-11eb-83b1-0030467bd099.png" alt="과목 특성 분석 결과">  
+
+과목 별 분석 결과 예시
+
