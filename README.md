@@ -30,7 +30,7 @@ SSU Capstone project 2020-2
 
 ## 사용 예시  
 
-<img src="https://user-images.githubusercontent.com/42201356/106392285-72152f00-6434-11eb-8453-c829c164d8de.png" alt="분석 결과 출력 예시"<=>
+<img src="https://user-images.githubusercontent.com/42201356/106392285-72152f00-6434-11eb-8453-c829c164d8de.png" alt="분석 결과 출력 예시">
 
 분석 결과 예시 (+는 호평, -는 악평을 의미)
 
