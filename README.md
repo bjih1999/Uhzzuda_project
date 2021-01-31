@@ -19,13 +19,6 @@ SSU Capstone project 2020-2
 
 ---
 
-## 사용 방법
-  repository clone 후  
-  
-`pip install -r requirements.txt  //프로젝트 디렉토리 root에서 실행`
-
----
-
 ## 개발 환경
 |  | tool |
 | --- | --- |
@@ -36,6 +29,10 @@ SSU Capstone project 2020-2
 ---
 
 ## 사용 예시  
+
+<img src="https://user-images.githubusercontent.com/42201356/106392285-72152f00-6434-11eb-8453-c829c164d8de.png" alt="분석 결과 출력 예시"<=>
+
+분석 결과 예시 (+는 호평, -는 악평을 의미)
 
 
 <img src="https://user-images.githubusercontent.com/42201356/103396395-635a0480-4b76-11eb-87dc-c1b4ba81ccc3.png" alt="강의 목록">  
