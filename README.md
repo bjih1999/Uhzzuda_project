@@ -35,13 +35,3 @@ SSU Capstone project 2020-2
 분석 결과 예시 (+는 호평, -는 악평을 의미)
 
 
-<img src="https://user-images.githubusercontent.com/42201356/103396395-635a0480-4b76-11eb-87dc-c1b4ba81ccc3.png" alt="강의 목록">  
-
-강의 목록 화면 출력 예시  
-
-
-
-<img src="https://user-images.githubusercontent.com/42201356/103397967-db77f880-4b7d-11eb-83b1-0030467bd099.png" alt="과목 특성 분석 결과">  
-
-과목 별 분석 결과 예시
-
